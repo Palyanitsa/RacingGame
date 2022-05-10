@@ -5,8 +5,7 @@ using UnityEngine;
 public class RandomSpawner : MonoBehaviour
 {
     public Rigidbody rb_player;
-    public GameObject gameObject_obstacle;
-
+    public List<GameObject> Prefabs;
     public float positionX = 7.0f;
     public float positionZ = 200.0f;
     public float playerDistance = 100.0f;
@@ -32,11 +31,12 @@ public class RandomSpawner : MonoBehaviour
         {
             for (int i = 0; i < 4; i++)
             {
+                //
                 float randPosX = Random.Range(positionX, -positionX);
                 float randPosZ = Random.Range(positionZ, -positionZ);
-                Vector3 spawnPos = new Vector3(randPosX, rb_player.position.y, spawnDistance + randPosZ);
-
-                Instantiate(gameObject_obstacle, spawnPos, Quaternion.identity);
+                Vector3 spawnPos = new Vector3(randPosX, 0, spawnDistance + randPosZ);
+                int rand = Random.Range(0, Prefabs.Count);
+                Instantiate(Prefabs[rand], spawnPos, Quaternion.identity);
                 t_time = Time.time;
             }
             

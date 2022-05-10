@@ -6,9 +6,8 @@ public class MapGenerator : MonoBehaviour
 {
     public Rigidbody rb_player;
     public GameObject gameObject_mapTile;
-
+    private float PlayerLastZPos = 0;
     public float playerDistance = 1000.0f;
-    public float spawnDistance = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +16,7 @@ public class MapGenerator : MonoBehaviour
 
         for (int i = 0; i < 10; i++)
         {
-            Vector3 spawnPos = new Vector3(0.0f, 0, spawnDistance + (i * 79));
+            Vector3 spawnPos = new Vector3(0, 0, (i * 50));
             Instantiate(gameObject_mapTile, spawnPos, Quaternion.identity);
         }
     }
@@ -25,11 +24,11 @@ public class MapGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        spawnDistance = rb_player.position.z + playerDistance;
 
-        if (rb_player.position.z % 100 == 0)
+        if (rb_player.position.z - PlayerLastZPos > 50)
         {
-            Vector3 spawnPos = new Vector3(0.0f, rb_player.position.y, spawnDistance);
+            PlayerLastZPos = rb_player.position.z;
+            Vector3 spawnPos = new Vector3(0, 0, rb_player.position.z+300);
             Instantiate(gameObject_mapTile, spawnPos, Quaternion.identity);
         }
     }

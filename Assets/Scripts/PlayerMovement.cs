@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     private Animator animator;
     private bool TurningL = false;
     private bool TurningR = false;
-    public float forwardForce = 2000f;
+    public float topSpeed = 1000f;
     public float sidewaysForce = 500f;
 
     void Start()
@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate ()
     {
-        rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, Mathf.Lerp(rb.velocity.z, topSpeed, 0.1f));
 
         if ( Input.GetKey("d") && !TurningR)
         {
