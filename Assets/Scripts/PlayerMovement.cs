@@ -5,8 +5,6 @@ public class PlayerMovement : MonoBehaviour {
     public Rigidbody rb;
 
     private Animator animator;
-    private bool TurningL = false;
-    private bool TurningR = false;
     public float topSpeed = 1000f;
     public float sidewaysForce = 500f;
 
@@ -20,36 +18,28 @@ public class PlayerMovement : MonoBehaviour {
     {
         rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, Mathf.Lerp(rb.velocity.z, topSpeed, 0.1f));
 
-        if ( Input.GetKey("d") && !TurningR)
+        if (Input.GetKey("d"))
         {
             rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
             animator.SetBool("TurningR", true);
-
-            TurningR = true;
         }
 
-        else if (Input.GetKey("d") && TurningR)
+        else
         {
             animator.SetBool("TurningR", false);
-
-            TurningR = false;
         }
 
-        if (Input.GetKey("a") && !TurningL)
+        if (Input.GetKey("a"))
         {
             rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
             animator.SetBool("TurningL", true);
-
-            TurningL = true;
         }
 
-        else if (Input.GetKey("a") && TurningL)
+        else 
         {
             animator.SetBool("TurningL", false);
-
-            TurningL = false;
         }
 
 
