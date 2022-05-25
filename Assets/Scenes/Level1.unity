@@ -290,7 +290,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 945668822}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 543450651864213332}
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 686067132}
 --- !u!114 &686067132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,8 +703,7 @@ MonoBehaviour:
   - {fileID: 841342993553911329, guid: 6617de6d714ccba45841ecc2f6b582a6, type: 3}
   positionX: 7
   positionZ: 200
-  playerDistance: 100
-  spawnDistance: 0
+  playerDistance: 300
 --- !u!114 &1836313101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1060,6 +1059,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4803874310810132221, guid: 6aff89df234a70640911bdf80992b3f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6aff89df234a70640911bdf80992b3f9, type: 3}
 --- !u!1001 &6225000620567713536
@@ -1073,6 +1076,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6225000620670849046, guid: 2be4a2991e8a4c04d8e1c7ce4ab8734a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1193789241}
     - target: {fileID: 6225000620670849046, guid: 2be4a2991e8a4c04d8e1c7ce4ab8734a, type: 3}
       propertyPath: CompleteLevelUI
       value: 

@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
 
     public float restartDelay = 1f;
 
+    public GameObject player;
     public GameObject CompleteLevelUI;
 
     public void CompleteLevel ()
@@ -18,6 +19,12 @@ public class GameManager : MonoBehaviour {
     {
         if (gameHasEnded == false)
         {
+            PlayerPrefs.SetInt("prevScore", (int)player.transform.position.z);
+            if (PlayerPrefs.GetInt("maxScore")< (int) player.transform.position.z)
+            {
+                Debug.Log((int)player.transform.position.z);
+                PlayerPrefs.SetInt("maxScore", (int) player.transform.position.z);
+            }
             gameHasEnded = true;
             Debug.Log("GAME OVER");
             Invoke("Restart", restartDelay);

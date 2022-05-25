@@ -7,9 +7,9 @@ public class RandomSpawner : MonoBehaviour
     public Rigidbody rb_player;
     public List<GameObject> Prefabs;
     public float positionX = 7.0f;
-    public float positionZ = 200.0f;
-    public float playerDistance = 100.0f;
-    public float spawnDistance = 0.0f;
+    public float positionZ = 10.0f;
+    public float playerDistance = 200.0f;
+    private float spawnDistance;
     private float t_time = 0.0f;
     private float timeToSpawn = 1.0f;
 
@@ -31,7 +31,6 @@ public class RandomSpawner : MonoBehaviour
         {
             for (int i = 0; i < 4; i++)
             {
-                //
                 float randPosX = Random.Range(positionX, -positionX);
                 float randPosZ = Random.Range(positionZ, -positionZ);
                 Vector3 spawnPos = new Vector3(randPosX, 0, spawnDistance + randPosZ);
