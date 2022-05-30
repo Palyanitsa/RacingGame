@@ -3,12 +3,20 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
+    private Animator animator; 
+
     bool gameHasEnded = false;
 
     public float restartDelay = 1f;
 
     public GameObject player;
     public GameObject CompleteLevelUI;
+
+    void Start()
+    {
+        animator = gameObject.GetComponent<Animator>();
+    }
+
 
     public void CompleteLevel ()
     {
@@ -25,9 +33,12 @@ public class GameManager : MonoBehaviour {
                 Debug.Log((int)player.transform.position.z);
                 PlayerPrefs.SetInt("maxScore", (int) player.transform.position.z);
             }
+
+            animator.SetBool("GameOver", true);
+
             gameHasEnded = true;
             Debug.Log("GAME OVER");
-            Invoke("Restart", restartDelay);
+            //Invoke("Restart", restartDelay);            
         }
     }
 

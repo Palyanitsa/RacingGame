@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndScoreScript : MonoBehaviour
+public class HighScoreScript : MonoBehaviour
 {
     void Awake()
     {

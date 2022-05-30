@@ -8,9 +8,13 @@ public class PlayerMovement : MonoBehaviour {
     public float topSpeed = 1000f;
     public float sidewaysForce = 500f;
 
+    public AudioSource aSourse;
+    public AudioClip TurnLR;
+
     void Start()
     {
         animator = GetComponent<Animator>();
+        aSourse = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -23,6 +27,9 @@ public class PlayerMovement : MonoBehaviour {
             rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
             animator.SetBool("TurningR", true);
+
+            playSingleSound(TurnLR);
+
         }
 
         else
@@ -35,6 +42,8 @@ public class PlayerMovement : MonoBehaviour {
             rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
             animator.SetBool("TurningL", true);
+
+            playSingleSound(TurnLR);
         }
 
         else 
@@ -47,7 +56,17 @@ public class PlayerMovement : MonoBehaviour {
         if (rb.position.y < -1f)
         {
             FindObjectOfType<GameManager>().EndGame();
+        }
 
+
+
+        void playSingleSound(AudioClip clip, float volume = 1.0f)
+        {
+            aSourse.clip = clip;
+
+            aSourse.volume = volume;
+
+            aSourse.Play();
         }
     }
 }

@@ -8,10 +8,10 @@ public class DestructiblePlayer : MonoBehaviour
    
     
     //void OnMouseDown()
-   // {
-   //     Instantiate(destroyedVersion, transform.position, transform.rotation);
-   //     Destroy(gameObject);
-   // } 
+    // {
+    //     Instantiate(destroyedVersion, transform.position, transform.rotation);
+    //     Destroy(gameObject);
+    // } 
 
     void OnCollisionEnter(Collision collision)
     {
