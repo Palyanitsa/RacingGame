@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 
     void Start()
     {
-        animator = gameObject.GetComponent<Animator>();
+        animator = GameObject.FindGameObjectWithTag("QuitButton").GetComponent<Animator>();
     }
 
 
@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour {
     {
         if (gameHasEnded == false)
         {
+            
             PlayerPrefs.SetInt("prevScore", (int)player.transform.position.z);
             if (PlayerPrefs.GetInt("maxScore")< (int) player.transform.position.z)
             {
@@ -35,7 +36,6 @@ public class GameManager : MonoBehaviour {
             }
 
             animator.SetBool("GameOver", true);
-
             gameHasEnded = true;
             Debug.Log("GAME OVER");
             //Invoke("Restart", restartDelay);            

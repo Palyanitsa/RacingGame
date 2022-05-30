@@ -13,23 +13,29 @@ public class PlayerMovement : MonoBehaviour {
 
     void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = gameObject.GetComponent<Animator>();
         aSourse = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        if (Input.GetKeyDown("d") || Input.GetKeyDown("a"))
+        {
+            aSourse.PlayOneShot(TurnLR);
+        }
+    }
+
     void FixedUpdate ()
     {
         rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, Mathf.Lerp(rb.velocity.z, topSpeed, 0.1f));
+
+
 
         if (Input.GetKey("d"))
         {
             rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
             animator.SetBool("TurningR", true);
-
-            playSingleSound(TurnLR);
-
         }
 
         else
@@ -42,8 +48,6 @@ public class PlayerMovement : MonoBehaviour {
             rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
             animator.SetBool("TurningL", true);
-
-            playSingleSound(TurnLR);
         }
 
         else 
@@ -60,14 +64,15 @@ public class PlayerMovement : MonoBehaviour {
 
 
 
-        void playSingleSound(AudioClip clip, float volume = 1.0f)
-        {
-            aSourse.clip = clip;
+        
+    }
+    void playSingleSound(AudioClip clip, float volume = 1.0f)
+    {
+        aSourse.clip = clip;
 
-            aSourse.volume = volume;
+        aSourse.volume = volume;
 
-            aSourse.Play();
-        }
+        aSourse.Play();
     }
 }
 

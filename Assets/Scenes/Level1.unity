@@ -608,31 +608,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4803874311383591323, guid: 6aff89df234a70640911bdf80992b3f9, type: 3}
   m_PrefabInstance: {fileID: 4803874310546383736}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &894751639 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6225000620670849045, guid: 2be4a2991e8a4c04d8e1c7ce4ab8734a, type: 3}
-  m_PrefabInstance: {fileID: 6225000620567713536}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &894751642
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894751639}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b0cc3459c0d560f489bb132bd30d6507, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!224 &945668822 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4803874310810132209, guid: 6aff89df234a70640911bdf80992b3f9, type: 3}
@@ -848,7 +823,7 @@ GameObject:
   - component: {fileID: 1472486437}
   m_Layer: 5
   m_Name: Quit
-  m_TagString: Untagged
+  m_TagString: QuitButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
