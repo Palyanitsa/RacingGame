@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.iOS;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -21,7 +22,7 @@ public class PlayerMovement : MonoBehaviour {
     {
 
         //if (Input.GetKeyDown("d") || Input.GetKeyDown("a"))
-        if (Input.GetButtonDown("TurnR") || Input.GetButtonDown("TurnL"))
+        if (Input.GetKeyDown("a") || Input.GetKeyDown("d") || Input.touchCount > 0) 
         {
             aSourse.PlayOneShot(TurnLR);
         }
@@ -30,36 +31,84 @@ public class PlayerMovement : MonoBehaviour {
     void FixedUpdate ()
     {
         rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, Mathf.Lerp(rb.velocity.z, topSpeed, 0.1f));
-
-
-
-        //if (Input.GetKey("d"))
-        if (Input.GetButtonDown("TurnR"))
+        
+        if (Input.touchCount > 0)
         {
-            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
-            animator.SetBool("TurningR", true);
-        }
 
-        else
-        {
-            animator.SetBool("TurningR", false);
-        }
 
-        //if (Input.GetKey("a"))
-        if (Input.GetButtonDown("TurnL"))
-        {
-            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            //if (Input.GetKey("d"))
+            //if (Input.GetButtonDown("TurnR"))
+            if (Input.GetTouch(0).position.x > Screen.width / 2)
+            {
+                rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
-            animator.SetBool("TurningL", true);
+                animator.SetBool("TurningR", true);
+
+
+            }
+
+            else
+            {
+                animator.SetBool("TurningR", false);
+            }
+
+            //if (Input.GetKey("a"))
+            //if (Input.GetButtonDown("TurnL"))
+            if (Input.GetTouch(0).position.x < Screen.width / 2)
+            {
+                rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+
+                animator.SetBool("TurningL", true);
+            }
+
+            else
+            {
+                animator.SetBool("TurningL", false);
+            }
+
+
         }
 
         else 
         {
-            animator.SetBool("TurningL", false);
+
+
+
+            //if (Input.GetKey("d"))
+            //if (Input.GetButtonDown("TurnR"))
+            if (Input.GetKey("d"))
+            {
+                rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+
+                animator.SetBool("TurningR", true);
+
+            
+            }
+
+            else
+            {
+            animator.SetBool("TurningR", false);
+            }
+
+            //if (Input.GetKey("a"))
+            //if (Input.GetButtonDown("TurnL"))
+            if (Input.GetKey("a"))
+            {
+                rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+
+                animator.SetBool("TurningL", true);
+            }
+
+            else 
+            {
+                animator.SetBool("TurningL", false);
+            }
+
+
         }
 
-
+        
 
         if (rb.position.y < -1f)
         {
