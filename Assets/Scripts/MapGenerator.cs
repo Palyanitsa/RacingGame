@@ -16,7 +16,7 @@ public class MapGenerator : MonoBehaviour
 
         for (int i = 0; i < 10; i++)
         {
-            Vector3 spawnPos = new Vector3(0, 0, (i * 50));
+            Vector3 spawnPos = new Vector3(0, 0, (i * 79));
             Instantiate(gameObject_mapTile, spawnPos, Quaternion.identity);
         }
     }

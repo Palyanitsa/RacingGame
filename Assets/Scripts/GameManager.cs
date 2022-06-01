@@ -12,9 +12,12 @@ public class GameManager : MonoBehaviour {
     public GameObject player;
     public GameObject CompleteLevelUI;
 
+    public AudioSource aSourse;
+
     void Start()
     {
         animator = GameObject.FindGameObjectWithTag("QuitButton").GetComponent<Animator>();
+        aSourse = gameObject.GetComponent<AudioSource>();
     }
 
 
@@ -38,7 +41,9 @@ public class GameManager : MonoBehaviour {
             animator.SetBool("GameOver", true);
             gameHasEnded = true;
             Debug.Log("GAME OVER");
-            //Invoke("Restart", restartDelay);            
+            //Invoke("Restart", restartDelay);
+
+            aSourse.Play();
         }
     }
 

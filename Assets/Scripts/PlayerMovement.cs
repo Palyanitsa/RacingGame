@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour {
     public float sidewaysForce = 500f;
 
     public AudioSource aSourse;
-    public AudioClip TurnLR;
+    public AudioClip TurnLR;    
 
     void Start()
     {
@@ -19,7 +19,9 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown("d") || Input.GetKeyDown("a"))
+
+        //if (Input.GetKeyDown("d") || Input.GetKeyDown("a"))
+        if (Input.GetButtonDown("TurnR") || Input.GetButtonDown("TurnL"))
         {
             aSourse.PlayOneShot(TurnLR);
         }
@@ -31,7 +33,8 @@ public class PlayerMovement : MonoBehaviour {
 
 
 
-        if (Input.GetKey("d"))
+        //if (Input.GetKey("d"))
+        if (Input.GetButtonDown("TurnR"))
         {
             rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
@@ -43,7 +46,8 @@ public class PlayerMovement : MonoBehaviour {
             animator.SetBool("TurningR", false);
         }
 
-        if (Input.GetKey("a"))
+        //if (Input.GetKey("a"))
+        if (Input.GetButtonDown("TurnL"))
         {
             rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
