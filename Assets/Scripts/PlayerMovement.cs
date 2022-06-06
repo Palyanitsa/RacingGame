@@ -10,33 +10,27 @@ public class PlayerMovement : MonoBehaviour {
     public float sidewaysForce = 500f;
 
     public AudioSource aSourse;
-    public AudioClip TurnLR;    
+    //public AudioClip TurnLR;    
 
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
-        aSourse = GetComponent<AudioSource>();
+        //aSourse = GetComponent<AudioSource>();
     }
 
-    private void Update()
-    {
-
-        //if (Input.GetKeyDown("d") || Input.GetKeyDown("a"))
-        if (Input.GetKeyDown("a") || Input.GetKeyDown("d") || Input.touchCount > 0) 
-        {
-            aSourse.PlayOneShot(TurnLR);
-        }
-    }
-
+   
     void FixedUpdate ()
     {
         rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, Mathf.Lerp(rb.velocity.z, topSpeed, 0.1f));
-        
+
+        //if (Input.GetKeyDown("d") || Input.GetKeyDown("a"))
+        if (Input.GetKeyDown("a") || Input.GetKeyDown("d") || Input.touchCount > 0)
+        {
+            //aSourse.PlayOneShot(TurnLR);
+        }
+
         if (Input.touchCount > 0)
         {
-
-
-
             //if (Input.GetKey("d"))
             //if (Input.GetButtonDown("TurnR"))
             if (Input.GetTouch(0).position.x > Screen.width / 2)
@@ -44,8 +38,6 @@ public class PlayerMovement : MonoBehaviour {
                 rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
                 animator.SetBool("TurningR", true);
-
-
             }
 
             else
@@ -66,24 +58,17 @@ public class PlayerMovement : MonoBehaviour {
             {
                 animator.SetBool("TurningL", false);
             }
-
-
         }
 
         else 
         {
-
-
-
             //if (Input.GetKey("d"))
             //if (Input.GetButtonDown("TurnR"))
             if (Input.GetKey("d"))
             {
                 rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
-                animator.SetBool("TurningR", true);
-
-            
+                animator.SetBool("TurningR", true);            
             }
 
             else
@@ -104,19 +89,12 @@ public class PlayerMovement : MonoBehaviour {
             {
                 animator.SetBool("TurningL", false);
             }
-
-
         }
-
-        
 
         if (rb.position.y < -1f)
         {
             FindObjectOfType<GameManager>().EndGame();
         }
-
-
-
         
     }
     void playSingleSound(AudioClip clip, float volume = 1.0f)

@@ -12,6 +12,8 @@ public class RandomSpawner : MonoBehaviour
     private float spawnDistance;
     private float t_time = 0.0f;
     private float timeToSpawn = 1.0f;
+    //public GameObject[] ArrayObjects = new GameObject[100]; 
+    GameObject clone;
 
     int i = 0;
 
@@ -35,13 +37,11 @@ public class RandomSpawner : MonoBehaviour
                 float randPosZ = Random.Range(positionZ, -positionZ);
                 Vector3 spawnPos = new Vector3(randPosX, 0, spawnDistance + randPosZ);
                 int rand = Random.Range(0, Prefabs.Count);
-                Instantiate(Prefabs[rand], spawnPos, Quaternion.identity);
+                clone = Instantiate(Prefabs[rand], spawnPos, Quaternion.identity);
+                Destroy(clone, 6.0f);
                 t_time = Time.time;
             }
             
-        }
-
-
-        
+        } 
     }
 }
