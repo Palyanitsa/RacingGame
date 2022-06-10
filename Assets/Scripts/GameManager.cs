@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour {
             animator.SetBool("GameOver", true);
             gameHasEnded = true;
             Debug.Log("GAME OVER");
-            //Invoke("Restart", restartDelay);
+            Invoke("Restart", restartDelay);
 
             aSourse.Play();
         }
